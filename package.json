@@ -54,6 +54,9 @@
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@luma.gl/engine": "^8.0.0",
+    "@luma.gl/webgl": "^8.0.0"
+  },
   "peerDependencies": {}
 }

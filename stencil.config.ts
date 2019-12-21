@@ -3,6 +3,11 @@ import { sass } from "@stencil/sass";
 
 export const config: Config = {
   namespace: "project-name",
+  commonjs: {
+    namedExports: {
+      "probe.gl/env": ["isBrowser", "global", "getBrowser"]
+    }
+  },
   outputTargets: [
     {
       type: "dist",
