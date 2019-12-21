@@ -10,53 +10,44 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface ComponentName {
+  interface PwcMap {
     /**
-    * The first name
+    * Config for the map to be initialized
     */
-    'first': string;
+    'config': object;
     /**
-    * The last name
+    * Allow to get map instance from pwc-map element
+    * @returns Promise which resolves pwc map instance
+    * @author SchemeSonic
     */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
+    'getMap': () => Promise<any>;
   }
 }
 
 declare global {
 
 
-  interface HTMLComponentNameElement extends Components.ComponentName, HTMLStencilElement {}
-  var HTMLComponentNameElement: {
-    prototype: HTMLComponentNameElement;
-    new (): HTMLComponentNameElement;
+  interface HTMLPwcMapElement extends Components.PwcMap, HTMLStencilElement {}
+  var HTMLPwcMapElement: {
+    prototype: HTMLPwcMapElement;
+    new (): HTMLPwcMapElement;
   };
   interface HTMLElementTagNameMap {
-    'component-name': HTMLComponentNameElement;
+    'pwc-map': HTMLPwcMapElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface ComponentName {
+  interface PwcMap {
     /**
-    * The first name
+    * Config for the map to be initialized
     */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
+    'config'?: object;
+    'onMapInitialized'?: (event: CustomEvent<any>) => void;
   }
 
   interface IntrinsicElements {
-    'component-name': ComponentName;
+    'pwc-map': PwcMap;
   }
 }
 
@@ -66,7 +57,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'component-name': LocalJSX.ComponentName & JSXBase.HTMLAttributes<HTMLComponentNameElement>;
+      'pwc-map': LocalJSX.PwcMap & JSXBase.HTMLAttributes<HTMLPwcMapElement>;
     }
   }
 }
